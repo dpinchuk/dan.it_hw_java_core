@@ -16,6 +16,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         final int M = 5;
         final int N = 5;
+        int targetCapacity = 3;
         int[][] square = new int[M][N];
 
         System.out.println("All set. Get ready to rumble!\n");
@@ -55,7 +56,14 @@ public class Main {
 
     }
 
-    private int[][] setTarget(int[][] arr) {
+    private int[][] setTarget(int[][] arr, int targetCapacity, int xTarget, int yTarget) {
+        if (xTarget == 0) {
+            for (int i = 0; i < targetCapacity; i++) {
+                arr[i][yTarget] = 2;
+            }
+        } else if (xTarget == arr.length) {
+
+        }
 
         return null;
     }
