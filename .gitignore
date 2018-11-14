@@ -1,0 +1,17 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+*.iml
+*.xml
+
+target/
+
+# dependencies
+.idea/
+/node_modules
+/dist/
+
+# testing
+/coverage
+
+# production
+/build
