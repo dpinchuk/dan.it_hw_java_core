@@ -1,7 +1,4 @@
 *.iml
-*.xml
-
 target/
-
-# dependencies
+out/
 .idea/
