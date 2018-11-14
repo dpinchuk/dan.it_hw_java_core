@@ -5,10 +5,10 @@ import java.util.Scanner;
 import java.util.Random;
 
 /*
-* Write a program of "number", which makes a random number and prompts the player to guess.
-*
-* @Author Dmitry Pinchuk
-* */
+ * Write a program of "number", which makes a random number and prompts the player to guess.
+ *
+ * @author Dmitry Pinchuk
+ * */
 public class Main {
 
     public static void main(String[] args) {
@@ -44,17 +44,19 @@ public class Main {
                 System.out.println("Your number is too big. Please, try again...");
             } else {
                 System.out.println("Congratulations, " + name + "!");
+                System.out.println("Hidden number is '" + gamerNumber + "'");
                 System.out.println("Your numbers: " + Arrays.toString(arrGamerNumbers));
                 break;
             }
             System.out.print("Enter your number, please: ");
         }
-
     }
 
-    /*
-    * The method increases the size of the array by 1
-    * */
+    /**
+     * The method increases the size of the array by 1
+     *
+     * @param arr - array
+     */
     private static int[] expansionArray(int[] arr) {
         int[] newArr = new int[arr.length + 1];
         System.arraycopy(arr, 0, newArr, 0, newArr.length - 1);
@@ -62,9 +64,13 @@ public class Main {
         return newArr;
     }
 
-    /*
-    * Quick array sorting method
-    * */
+    /**
+     * Quick array sorting method
+     *
+     * @param arr  - array
+     * @param low  - low array index
+     * @param high - high array index
+     */
     private static void quickSortArray(int[] arr, int low, int high) {
         if (arr == null || arr.length == 0)
             return;
