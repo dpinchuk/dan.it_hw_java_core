@@ -20,30 +20,43 @@ public class Main {
         int indexArray = 0;
 
         // Random number [0, 100]
-        int min = 0;
-        int max = 100;
-        int rundomNumber = random.nextInt((max - min) + 1);
+        final int N = 100;
+        int rundomNumber = random.nextInt(N);
+        String gamerNumberStr = "";
+        int gamerNumber = 0;
 
         System.out.print("Enter your name: ");
         String name = scanner.nextLine();
         System.out.println("\nLet the game begin!");
-
         System.out.print("Enter your number, please: ");
 
         // Endless loop
         while (true) {
-            int gamerNumber = scanner.nextInt();
+            boolean isNumber = false;
+            while(!isNumber) {
+                gamerNumberStr = scanner.nextLine();
+                try {
+                    gamerNumber = Integer.parseInt(gamerNumberStr);
+                    isNumber = true;
+                } catch(Exception e) {
+                    System.out.print("Enter correct number, please: ");
+                }
+            }
+
             arrGamerNumbers = expansionArray(arrGamerNumbers);
             arrGamerNumbers[indexArray++] = gamerNumber;
-            quickSortArray(arrGamerNumbers, 0, arrGamerNumbers.length - 1);
+            //quickSortArray(arrGamerNumbers, 0, arrGamerNumbers.length - 1);
+            bubbleSortDescendingArray(arrGamerNumbers);
 
             // Сonditions
             if (gamerNumber < rundomNumber) {
                 System.out.println("Your number is too small. Please, try again...");
+                System.out.println("Your numbers: " + Arrays.toString(arrGamerNumbers));
             } else if (gamerNumber > rundomNumber) {
                 System.out.println("Your number is too big. Please, try again...");
+                System.out.println("Your numbers: " + Arrays.toString(arrGamerNumbers));
             } else {
-                System.out.println("Congratulations, " + name + "!");
+                System.out.println("\nCongratulations, " + name + "!");
                 System.out.println("Hidden number is '" + gamerNumber + "'");
                 System.out.println("Your numbers: " + Arrays.toString(arrGamerNumbers));
                 break;
@@ -67,9 +80,10 @@ public class Main {
     /**
      * Quick array sorting method
      *
-     * @param arr  - array
-     * @param low  - low array index
-     * @param high - high array index
+     * @param arr
+     * @param low
+     * @param high
+     * @void
      */
     private static void quickSortArray(int[] arr, int low, int high) {
         if (arr == null || arr.length == 0)
@@ -110,6 +124,30 @@ public class Main {
 
         if (high > i)
             quickSortArray(arr, i, high);
+    }
+
+    /**
+     * Bubble sorting array [Time complexity: O(n^2)]
+     *
+     * @param arr
+     * @return
+     */
+    public static int[] bubbleSortDescendingArray(int[] arr) {
+
+        if (arr == null || arr.length <= 1) {
+            return arr;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < arr.length - i; j++) {
+                if (arr[j - 1] < arr[j]) {
+                    arr[j] = arr[j] + arr[j - 1];
+                    arr[j - 1] = arr[j] - arr[j - 1];
+                    arr[j] = arr[j] - arr[j - 1];
+                }
+            }
+        }
+        return arr;
     }
 
 }
