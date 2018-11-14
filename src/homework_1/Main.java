@@ -132,10 +132,10 @@ public class Main {
      * @param arr
      * @return
      */
-    public static int[] bubbleSortDescendingArray(int[] arr) {
+    private static void bubbleSortDescendingArray(int[] arr) {
 
         if (arr == null || arr.length <= 1) {
-            return arr;
+            return;
         }
 
         for (int i = 0; i < arr.length; i++) {
@@ -147,7 +147,6 @@ public class Main {
                 }
             }
         }
-        return arr;
     }
 
 }
