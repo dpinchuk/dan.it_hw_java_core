@@ -23,8 +23,8 @@ public class Main {
         System.out.println("All set. Get ready to rumble!\n");
 
         // random getting target start point for setting target
-        int xTarget = new Random().nextInt(M - 1);
-        int yTarget = new Random().nextInt(N - 1);
+        int xTarget = random.nextInt(M - 1);
+        int yTarget = random.nextInt(N - 1);
 
         int[][] square = setTarget(targetCapacity, xTarget, yTarget, M, N);
         printBattleArray(square, M, N, false);
