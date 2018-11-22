@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
         // init constants
         final int M = 7;
         final int N = 2;
@@ -45,29 +44,31 @@ public class Main {
             inputDay = inputDay.toLowerCase().trim();
 
             if (inputDay.equals("exit")) {
+                System.out.println("Buy!");
                 break;
             }
 
             if (inputDay.split(" ").length == 1) {
                 for (int i = 0; i < scedule.length; i++) {
-                    if (inputDay.equals(scedule[i][0])) {
-                        getScheduleForCurrentDay(scedule[i][0], scedule);
+                    if (inputDay.equals(scedule[i][0].toLowerCase())) {
+                        getScheduleForCurrentDay(scedule[i][0].toLowerCase(), scedule);
                         break;
                     }
                     if (i == scedule.length - 1) {
-                        System.out.println("Sorry, I don't understand you, please try again");
+                        System.out.println("\nSorry, I don't understand you, please try again");
                         break;
                     }
                 }
-            } else if (inputDay.split(" ").length == 2) {
+            } else if (inputDay.replaceAll("[\\s]{2,}", " ").split(" ").length == 2) {
+                inputDay = inputDay.replaceAll("[\\s]{2,}", " ");
                 for (int i = 0; i < scedule.length; i++) {
-                    if ((inputDay.contains(scedule[i][0])) &&
+                    if ((inputDay.contains(scedule[i][0].toLowerCase())) &&
                             (inputDay.contains("change") || inputDay.contains("reschedule"))) {
                         setScheduleForCurrentDay(scedule[i][0], scedule, i, scanner);
                         break;
                     }
                     if (i == scedule.length - 1) {
-                        System.out.println("Sorry, I don't understand you, please try again");
+                        System.out.println("\nSorry, I don't understand you, please try again");
                         break;
                     }
                 }
@@ -79,29 +80,37 @@ public class Main {
     }
 
     private static void setScheduleForCurrentDay(String schedule, String[][] scedule, int i, Scanner scanner) {
-        System.out.println("\nPlease, input new tasks for " + schedule);
+        System.out.print("\nPlease, input new tasks for '" + schedule + "': ");
         scedule[i][1] = scanner.nextLine();
-
+        System.out.println();
     }
 
-    private static String getScheduleForCurrentDay(String day, String[][] scedule) {
+    private static void getScheduleForCurrentDay(String day, String[][] scedule) {
         switch (day) {
             case "sunday":
-                return "\nYour tasks for " + day + ": '" + scedule[0][1] + "'";
+                System.out.println("Your tasks for " + scedule[0][0] + ": '" + scedule[0][1] + "'\n");
+                break;
             case "monday":
-                return "\nYour tasks for " + day + ": '" + scedule[1][1] + "'";
+                System.out.println("Your tasks for " + scedule[1][0] + ": '" + scedule[1][1] + "'\n");
+                break;
             case "tuesday":
-                return "\nYour tasks for " + day + ": '" + scedule[2][1] + "'";
+                System.out.println("Your tasks for " + scedule[2][0] + ": '" + scedule[2][1] + "'\n");
+                break;
             case "wednesday":
-                return "\nYour tasks for " + day + ": '" + scedule[3][1] + "'";
+                System.out.println("Your tasks for " + scedule[3][0] + ": '" + scedule[3][1] + "'\n");
+                break;
             case "thursday":
-                return "\nYour tasks for " + day + ": '" + scedule[4][1] + "'";
+                System.out.println("Your tasks for " + scedule[4][0] + ": '" + scedule[4][1] + "'\n");
+                break;
             case "friday":
-                return "\nYour tasks for " + day + ": '" + scedule[5][1] + "'";
+                System.out.println("Your tasks for " + scedule[5][0] + ": '" + scedule[5][1] + "'\n");
+                break;
             case "saturday":
-                return "\nYour tasks for " + day + ": '" + scedule[6][1] + "'";
+                System.out.println("Your tasks for " + scedule[6][0] + ": '" + scedule[6][1] + "'\n");
+                break;
+            default:
+                System.out.println("Sorry, I don't understand you, please try again\n");
         }
-        return "\nSorry, I don't understand you, please try again";
     }
 
 }
