@@ -10,29 +10,29 @@ public class Main {
         final int N = 2;
 
         // creating array[][] of Strings
-        String[][] scedule = new String[M][N];
+        String[][] schedules = new String[M][N];
 
         // filling array
-        scedule[0][0] = "Sunday";
-        scedule[0][1] = "do home work";
+        schedules[0][0] = "Sunday";
+        schedules[0][1] = "do home work";
 
-        scedule[1][0] = "Monday";
-        scedule[1][1] = "go to courses; watch a film";
+        schedules[1][0] = "Monday";
+        schedules[1][1] = "go to courses; watch a film";
 
-        scedule[2][0] = "Tuesday";
-        scedule[2][1] = "do first project";
+        schedules[2][0] = "Tuesday";
+        schedules[2][1] = "do first project";
 
-        scedule[3][0] = "Wednesday";
-        scedule[3][1] = "do second project";
+        schedules[3][0] = "Wednesday";
+        schedules[3][1] = "do second project";
 
-        scedule[4][0] = "Thursday";
-        scedule[4][1] = "do third project";
+        schedules[4][0] = "Thursday";
+        schedules[4][1] = "do third project";
 
-        scedule[5][0] = "Friday";
-        scedule[5][1] = "go to beer";
+        schedules[5][0] = "Friday";
+        schedules[5][1] = "go to beer";
 
-        scedule[6][0] = "Saturday";
-        scedule[6][1] = "go to courses";
+        schedules[6][0] = "Saturday";
+        schedules[6][1] = "go to courses";
 
         Scanner scanner = new Scanner(System.in);
         String inputDay = "";
@@ -49,25 +49,25 @@ public class Main {
             }
 
             if (inputDay.split(" ").length == 1) {
-                for (int i = 0; i < scedule.length; i++) {
-                    if (inputDay.equals(scedule[i][0].toLowerCase())) {
-                        getScheduleForCurrentDay(scedule[i][0].toLowerCase(), scedule);
+                for (int i = 0; i < schedules.length; i++) {
+                    if (inputDay.equals(schedules[i][0].toLowerCase())) {
+                        getScheduleForCurrentDay(schedules[i][0].toLowerCase(), schedules);
                         break;
                     }
-                    if (i == scedule.length - 1) {
+                    if (i == schedules.length - 1) {
                         System.out.println("\nSorry, I don't understand you, please try again");
                         break;
                     }
                 }
             } else if (inputDay.replaceAll("[\\s]{2,}", " ").split(" ").length == 2) {
                 inputDay = inputDay.replaceAll("[\\s]{2,}", " ");
-                for (int i = 0; i < scedule.length; i++) {
-                    if ((inputDay.contains(scedule[i][0].toLowerCase())) &&
+                for (int i = 0; i < schedules.length; i++) {
+                    if ((inputDay.contains(schedules[i][0].toLowerCase())) &&
                             (inputDay.contains("change") || inputDay.contains("reschedule"))) {
-                        setScheduleForCurrentDay(scedule[i][0], scedule, i, scanner);
+                        setScheduleForCurrentDay(schedules[i][0], schedules, i, scanner);
                         break;
                     }
-                    if (i == scedule.length - 1) {
+                    if (i == schedules.length - 1) {
                         System.out.println("\nSorry, I don't understand you, please try again");
                         break;
                     }
