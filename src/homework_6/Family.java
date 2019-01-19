@@ -56,13 +56,12 @@ public class Family {
     }
 
     public boolean deleteChild(Human child) {
-        int index = 0;
         for (int i = 0; i <= this.children.length; i++) {
             if (this.children[i].getFamily().equals(child.getFamily()) &&
                     this.children[i].getName().equals(child.getName()) &&
                     this.children[i].getMother().equals(child.getMother()) &&
                     this.children[i].getFather().equals(child.getFather())) {
-                this.deleteChild(index);
+                this.deleteChild(i);
                 return true;
             }
         }
