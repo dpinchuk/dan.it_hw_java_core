@@ -29,6 +29,7 @@ public class Human {
      * @param iq
      * @param mother
      * @param father
+     * @param pet
      */
     public Human(String name, String surname, short year, byte iq, Human mother, Human father, Pet pet) {
         this.name = name;
