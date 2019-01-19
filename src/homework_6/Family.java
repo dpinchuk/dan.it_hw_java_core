@@ -66,7 +66,6 @@ public class Family {
                 return true;
             }
         }
-
         return false;
     }
 
