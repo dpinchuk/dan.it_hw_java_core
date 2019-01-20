@@ -54,8 +54,8 @@ public class Family {
     // Зачем переопределять equal(), если я сравниваю строки?
     public boolean deleteChild(Human child) {
         for (int i = 0; i <= this.children.length; i++) {
-            if (this.isEqualChild(child, this.children[i])) {
-                this.deleteChild(i);
+            if (isEqualChild(child, this.children[i])) {
+                deleteChild(i);
                 return true;
             }
         }
