@@ -143,7 +143,7 @@ public class Pet {
                 "nickname='" + this.nickname + "'" +
                 ", age=" + this.age +
                 ", trickLevel=" + this.trickLevel +
-                ", habits=" + Arrays.toString(this.habits) +
+                (this.habits != null ? ", habits=" + Arrays.toString(this.habits) : "") +
                 '}';
     }
 
