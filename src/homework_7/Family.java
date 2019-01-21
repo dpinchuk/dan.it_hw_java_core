@@ -157,7 +157,16 @@ public class Family {
         System.out.println();
     }
 
-        @Override
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Family family = (Family) o;
+        return Objects.equals(father, family.father) &&
+                Objects.equals(mother, family.mother);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(father, mother);
     }
