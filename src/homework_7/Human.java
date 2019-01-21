@@ -21,6 +21,10 @@ public class Human {
         System.out.println("Loading class [" + Human.class + "]");
     }
 
+    {
+        System.out.println("Creating new oblect [" + this + "]");
+    }
+
     /**
      * First full constructor for children
      *
@@ -34,18 +38,12 @@ public class Human {
         this.surname = surname;
         this.year = year;
         this.iq = iq;
-        {
-            System.out.println("Creating new oblect [" + this + "]");
-        }
     }
 
     /**
      * Empty constructor
      */
     public Human() {
-        {
-            System.out.println("Creating new oblect [" + this + "]");
-        }
     }
 
     @Override
@@ -114,18 +112,12 @@ public class Human {
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
         return year == human.year &&
-                iq == human.iq &&
                 Objects.equals(name, human.name) &&
-                Objects.equals(surname, human.surname) &&
-                Objects.equals(family, human.family) &&
-                Arrays.equals(schedule, human.schedule);
+                Objects.equals(surname, human.surname);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(name, surname, year, iq);
-        result = 31 * result + Arrays.hashCode(schedule);
-        return result;
+        return Objects.hash(name, surname, year);
     }
-
 }

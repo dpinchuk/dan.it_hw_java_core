@@ -15,6 +15,10 @@ public class Pet {
         System.out.println("Loading class [" + Pet.class + "]");
     }
 
+    {
+        System.out.println("Creating new oblect [" + this + "]");
+    }
+
     /**
      * Constructor for pet
      *
@@ -30,9 +34,6 @@ public class Pet {
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
-        {
-            System.out.println("Creating new oblect [" + this + "]");
-        }
     }
 
     /**
@@ -43,9 +44,6 @@ public class Pet {
     public Pet(String species, String nickname) {
         this.species = species;
         this.nickname = nickname;
-        {
-            System.out.println("Creating new oblect [" + this + "]");
-        }
     }
 
     /**
@@ -163,18 +161,12 @@ public class Pet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return age == pet.age &&
-                trickLevel == pet.trickLevel &&
-                Objects.equals(species, pet.species) &&
-                Objects.equals(nickname, pet.nickname) &&
-                Arrays.equals(habits, pet.habits);
+        return  Objects.equals(species, pet.species) &&
+                Objects.equals(nickname, pet.nickname);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(species, nickname, age, trickLevel);
-        result = 31 * result + Arrays.hashCode(habits);
-        return result;
+        return Objects.hash(species, nickname);
     }
-
 }

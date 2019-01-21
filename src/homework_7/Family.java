@@ -8,22 +8,20 @@ public class Family {
 
     private Human father;
     private Human mother;
-    private static Human[] children;
+    private Human[] children;
     private Pet pet;
 
     static {
         System.out.println("Loading class [" + Family.class + "]");
     }
 
+    {
+        System.out.println("Creating new oblect [" + this + "]");
+    }
+
     public Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
-        {
-            System.out.println("Creating new oblect [" + this + "]");
-        }
-    }
-
-    static {
         children = new Human[0];
     }
 
@@ -31,10 +29,6 @@ public class Family {
         this.father = father;
         this.mother = mother;
         this.pet = pet;
-        {
-            System.out.println("Creating new oblect [" + this + "]");
-        }
-
     }
 
     public void addChild(Human child) {
@@ -71,7 +65,7 @@ public class Family {
 
     public boolean deleteChild(Human child) {
         for (int i = 0; i <= this.children.length; i++) {
-            if (isEqualChild(child, this.children[i])) {
+            if (child.equals(this.children[i])) {
                 deleteChild(i);
                 return true;
             }
@@ -151,13 +145,6 @@ public class Family {
                 '}';
     }
 
-    private boolean isEqualChild(Human seekChild, Human child) {
-        if (seekChild.equals(child) && seekChild.hashCode() == child.hashCode()) {
-            return true;
-        }
-        return false;
-    }
-
     public Human[] getChildren() {
         return this.children;
     }
@@ -170,22 +157,8 @@ public class Family {
         System.out.println();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Family family = (Family) o;
-        return Objects.equals(father, family.father) &&
-                Objects.equals(mother, family.mother) &&
-                Arrays.equals(children, family.children) &&
-                Objects.equals(pet, family.pet);
-    }
-
-    @Override
+        @Override
     public int hashCode() {
-        int result = Objects.hash(father, mother, pet);
-        result = 31 * result + Arrays.hashCode(children);
-        return result;
+        return Objects.hash(father, mother);
     }
-
 }
