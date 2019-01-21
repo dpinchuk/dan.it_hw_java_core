@@ -17,12 +17,12 @@ public class Family {
 
     {
         System.out.println("Creating new oblect [" + this + "]");
+        children = new Human[0];
     }
 
     public Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
-        children = new Human[0];
     }
 
     public Family(Human father, Human mother, Pet pet) {
